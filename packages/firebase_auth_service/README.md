@@ -1,4 +1,4 @@
-# firebase_auth_wrapper
+# firebase_auth_service
 
 A new Flutter package project.
 

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:firebase_auth_wrapper/firebase_auth_wrapper.dart';
+import 'package:firebase_auth_service/firebase_auth_service.dart';
 
 void main() {
   group('User', () {

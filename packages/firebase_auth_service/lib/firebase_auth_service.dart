@@ -1,4 +1,4 @@
-library firebase_auth_wrapper;
+library firebase_auth_service;
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -34,7 +34,7 @@ class User {
       'uid: $uid, email: $email, photoUrl: $photoUrl, displayName: $displayName';
 }
 
-class FirebaseAuthWrapper {
+class FirebaseAuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Stream<User> get onAuthStateChanged {
