@@ -11,4 +11,4 @@ import 'package:custom_buttons/custom_buttons.dart';
 
 part 'email_password_sign_in_model.dart';
 part 'email_password_sign_in_page.dart';
-part 'strings.dart';
+part 'email_password_sign_in_strings.dart';

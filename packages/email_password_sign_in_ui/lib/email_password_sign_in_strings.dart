@@ -1,6 +1,6 @@
 part of email_password_sign_in_ui;
 
-class Strings {
+class EmailPasswordSignInStrings {
   static const String ok = 'OK';
   // Email & Password page
   static const String signIn = 'Sign in';
