@@ -1,5 +1,7 @@
 library email_password_sign_in_ui;
 
+import 'dart:math';
+
 import 'package:firebase_auth_service/firebase_auth_service.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
