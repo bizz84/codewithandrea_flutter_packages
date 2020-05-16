@@ -12,10 +12,10 @@ class AuthWidgetBuilder extends StatelessWidget {
   const AuthWidgetBuilder({
     Key key,
     @required this.builder,
-    this.userProvidersBuilder = const <SingleChildWidget>[],
+    this.userProvidersBuilder,
   }) : super(key: key);
   final Widget Function(BuildContext, AsyncSnapshot<User>) builder;
-  final List<SingleChildWidget> Function(BuildContext context, User user)
+  final List<SingleChildWidget> Function(BuildContext, User)
       userProvidersBuilder;
 
   @override
@@ -28,7 +28,9 @@ class AuthWidgetBuilder extends StatelessWidget {
         final User user = snapshot.data;
         if (user != null) {
           return MultiProvider(
-            providers: userProvidersBuilder(context, user),
+            providers: userProvidersBuilder != null
+                ? userProvidersBuilder(context, user)
+                : [],
             child: builder(context, snapshot),
           );
         }

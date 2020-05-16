@@ -16,6 +16,7 @@ dependencies:
       url: https://github.com/bizz84/flutter_core_packages
       path: packages/firebase_auth_service
   provider: 4.0.5
+  mockito: ^4.1.1
 
 dev_dependencies:
   flutter_test:
