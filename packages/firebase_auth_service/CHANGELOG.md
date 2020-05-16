@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] -  2020-05-16
 
-* TODO: Describe initial release.
+* Initial Release
+* Supports `onAuthStateChanged`, `signInAnonymously`, `signInWithEmailAndPassword`, `createUserWithEmailAndPassword`, `sendPasswordResetEmail`, `currentUser`, `signOut`
+* Add `User` class as a wrapper for `FirebaseAuth`
