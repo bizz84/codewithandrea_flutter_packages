@@ -12,4 +12,4 @@ NOTE: The author will only maintain these packages for his own internal projects
 
 Breaking changes may be introduced at any time.
 
-[LICENSE: MIT](LICENSE.md)
+[LICENSE: MIT](LICENSE)
