@@ -23,8 +23,7 @@ void main() {
         child: MaterialApp(
           home: Scaffold(
             body: Builder(
-              builder: (context) => EmailPasswordSignInPage.create(
-                context,
+              builder: (_) => EmailPasswordSignInPage(
                 onSignedIn: onSignedIn,
               ),
             ),

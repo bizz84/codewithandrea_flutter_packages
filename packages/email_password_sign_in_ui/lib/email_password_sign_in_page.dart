@@ -1,30 +1,37 @@
 part of email_password_sign_in_ui;
 
-class EmailPasswordSignInPage extends StatefulWidget {
-  const EmailPasswordSignInPage(
-      {Key key, @required this.model, this.onSignedIn})
-      : super(key: key);
-  final EmailPasswordSignInModel model;
+class EmailPasswordSignInPage extends StatelessWidget {
+  const EmailPasswordSignInPage({Key key, this.onSignedIn}) : super(key: key);
   final VoidCallback onSignedIn;
 
-  static Widget create(BuildContext context, {VoidCallback onSignedIn}) {
+  @override
+  Widget build(BuildContext context) {
     final FirebaseAuthService auth =
         Provider.of<FirebaseAuthService>(context, listen: false);
     return ChangeNotifierProvider<EmailPasswordSignInModel>(
       create: (_) => EmailPasswordSignInModel(auth: auth),
       child: Consumer<EmailPasswordSignInModel>(
-        builder: (_, model, __) =>
-            EmailPasswordSignInPage(model: model, onSignedIn: onSignedIn),
+        builder: (_, model, __) => EmailPasswordSignInPageContents(
+            model: model, onSignedIn: onSignedIn),
       ),
     );
   }
-
-  @override
-  _EmailPasswordSignInPageState createState() =>
-      _EmailPasswordSignInPageState();
 }
 
-class _EmailPasswordSignInPageState extends State<EmailPasswordSignInPage> {
+class EmailPasswordSignInPageContents extends StatefulWidget {
+  const EmailPasswordSignInPageContents(
+      {Key key, @required this.model, this.onSignedIn})
+      : super(key: key);
+  final EmailPasswordSignInModel model;
+  final VoidCallback onSignedIn;
+
+  @override
+  _EmailPasswordSignInPageContentsState createState() =>
+      _EmailPasswordSignInPageContentsState();
+}
+
+class _EmailPasswordSignInPageContentsState
+    extends State<EmailPasswordSignInPageContents> {
   final FocusScopeNode _node = FocusScopeNode();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
