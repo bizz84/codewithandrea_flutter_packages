@@ -61,9 +61,9 @@ class _EmailPasswordSignInPageState extends State<EmailPasswordSignInPage> {
         if (model.formType == EmailPasswordSignInFormType.forgotPassword) {
           await showAlertDialog(
             context: context,
-            title: Strings.resetLinkSentTitle,
-            content: Strings.resetLinkSentMessage,
-            defaultActionText: Strings.ok,
+            title: EmailPasswordSignInStrings.resetLinkSentTitle,
+            content: EmailPasswordSignInStrings.resetLinkSentMessage,
+            defaultActionText: EmailPasswordSignInStrings.ok,
           );
         } else {
           if (widget.onSignedIn != null) {
@@ -101,8 +101,8 @@ class _EmailPasswordSignInPageState extends State<EmailPasswordSignInPage> {
       key: const Key('email'),
       controller: _emailController,
       decoration: InputDecoration(
-        labelText: Strings.emailLabel,
-        hintText: Strings.emailHint,
+        labelText: EmailPasswordSignInStrings.emailLabel,
+        hintText: EmailPasswordSignInStrings.emailHint,
         errorText: model.emailErrorText,
         enabled: !model.isLoading,
       ),
@@ -167,7 +167,8 @@ class _EmailPasswordSignInPageState extends State<EmailPasswordSignInPage> {
           if (model.formType == EmailPasswordSignInFormType.signIn)
             FlatButton(
               key: const Key('tertiary-button'),
-              child: const Text(Strings.forgotPasswordQuestion),
+              child:
+                  const Text(EmailPasswordSignInStrings.forgotPasswordQuestion),
               onPressed: model.isLoading
                   ? null
                   : () => _updateFormType(
