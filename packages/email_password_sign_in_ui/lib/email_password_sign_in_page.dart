@@ -188,14 +188,19 @@ class _EmailPasswordSignInPageContentsState
       ),
       backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            child: Padding(
+        child: Center(
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Container(
+              width: min(constraints.maxWidth, 600),
               padding: const EdgeInsets.all(16.0),
-              child: _buildContent(),
-            ),
-          ),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: _buildContent(),
+                ),
+              ),
+            );
+          }),
         ),
       ),
     );
