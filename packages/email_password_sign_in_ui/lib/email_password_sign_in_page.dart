@@ -1,12 +1,13 @@
 part of email_password_sign_in_ui;
 
-class EmailPasswordSignInPageBuilder extends StatelessWidget {
-  const EmailPasswordSignInPageBuilder({Key key, this.onSignedIn})
+class EmailPasswordSignInPage extends StatefulWidget {
+  const EmailPasswordSignInPage(
+      {Key key, @required this.model, this.onSignedIn})
       : super(key: key);
+  final EmailPasswordSignInModel model;
   final VoidCallback onSignedIn;
 
-  @override
-  Widget build(BuildContext context) {
+  static Widget create(BuildContext context, {VoidCallback onSignedIn}) {
     final FirebaseAuthService auth =
         Provider.of<FirebaseAuthService>(context, listen: false);
     return ChangeNotifierProvider<EmailPasswordSignInModel>(
@@ -17,14 +18,6 @@ class EmailPasswordSignInPageBuilder extends StatelessWidget {
       ),
     );
   }
-}
-
-class EmailPasswordSignInPage extends StatefulWidget {
-  const EmailPasswordSignInPage(
-      {Key key, @required this.model, this.onSignedIn})
-      : super(key: key);
-  final EmailPasswordSignInModel model;
-  final VoidCallback onSignedIn;
 
   @override
   _EmailPasswordSignInPageState createState() =>
