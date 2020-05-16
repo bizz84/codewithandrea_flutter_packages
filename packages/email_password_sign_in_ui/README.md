@@ -1,14 +1,9 @@
 # email_password_sign_in_ui
 
-A new Flutter package project.
+This page implements a full-screen email and password sign in flow.
 
-## Getting Started
+It can be used as UI-ready drop-in if you want to add email & password sign in to your apps.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+NOTE: The author will only maintain this package for his own internal projects. It will **not** be published on [pub.dev](https://pub.dev) and, while you're free to use it, it's not meant to be a community project.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Breaking changes may be introduced at any time.

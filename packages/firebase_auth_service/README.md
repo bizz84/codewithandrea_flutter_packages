@@ -1,14 +1,9 @@
 # firebase_auth_service
 
-A new Flutter package project.
+This package includes `FirebaseAuthService`, a wrapper class for the `firebase_auth` APIs.
 
-## Getting Started
+It covers only a very limited subset of APIs from `firebase_auth`.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+NOTE: The author will only maintain this package for his own internal projects. It will **not** be published on [pub.dev](https://pub.dev) and, while you're free to use it, it's not meant to be a community project.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Breaking changes may be introduced at any time.
