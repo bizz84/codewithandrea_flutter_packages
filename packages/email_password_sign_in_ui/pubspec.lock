@@ -6,8 +6,8 @@ packages:
     description:
       path: "packages/alert_dialogs"
       ref: HEAD
-      resolved-ref: "0c677dc659018c81214a20b0816be4243cc2e482"
-      url: "https://github.com/bizz84/flutter_core_packages"
+      resolved-ref: "7d8907a1de40c813ffe32547c40b21615f5329c0"
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
     source: git
     version: "0.0.1"
   async:
@@ -50,8 +50,8 @@ packages:
     description:
       path: "packages/custom_buttons"
       ref: HEAD
-      resolved-ref: "0c677dc659018c81214a20b0816be4243cc2e482"
-      url: "https://github.com/bizz84/flutter_core_packages"
+      resolved-ref: "7d8907a1de40c813ffe32547c40b21615f5329c0"
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
     source: git
     version: "0.0.1"
   fake_async:
@@ -87,8 +87,8 @@ packages:
     description:
       path: "packages/firebase_auth_service"
       ref: HEAD
-      resolved-ref: "0c677dc659018c81214a20b0816be4243cc2e482"
-      url: "https://github.com/bizz84/flutter_core_packages"
+      resolved-ref: "7d8907a1de40c813ffe32547c40b21615f5329c0"
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
     source: git
     version: "0.0.1"
   firebase_auth_web:
@@ -256,8 +256,8 @@ packages:
     description:
       path: "packages/string_validators"
       ref: HEAD
-      resolved-ref: "0c677dc659018c81214a20b0816be4243cc2e482"
-      url: "https://github.com/bizz84/flutter_core_packages"
+      resolved-ref: "7d8907a1de40c813ffe32547c40b21615f5329c0"
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
     source: git
     version: "0.0.1"
   term_glyph:

@@ -1,6 +1,6 @@
-# FlutterCorePackages
+# CodeWithAndrea Flutter Packages
 
-Flutter Core Packages is a collection of packages, created to increase code reuse across many of my Flutter projects.
+A collection of packages, created to increase code reuse across many of my Flutter projects.
 
 They include:
 
