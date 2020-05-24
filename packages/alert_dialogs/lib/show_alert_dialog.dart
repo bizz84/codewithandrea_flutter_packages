@@ -6,6 +6,7 @@ Future<bool> showAlertDialog({
   @required String content,
   String cancelActionText,
   @required String defaultActionText,
+  VoidCallback onConfirmTxtPress,
 }) async {
   if (PlatformWeb.isWeb || !Platform.isIOS) {
     return showDialog(
@@ -21,7 +22,7 @@ Future<bool> showAlertDialog({
             ),
           FlatButton(
             child: Text(defaultActionText),
-            onPressed: () => Navigator.of(context).pop(true),
+            onPressed:onConfirmTxtPress == null ? () => Navigator.of(context).pop(true) : onConfirmTxtPress,
           ),
         ],
       ),
@@ -40,7 +41,7 @@ Future<bool> showAlertDialog({
           ),
         CupertinoDialogAction(
           child: Text(defaultActionText),
-          onPressed: () => Navigator.of(context).pop(true),
+          onPressed:onConfirmTxtPress == null ? () => Navigator.of(context).pop(true) : onConfirmTxtPress,
         ),
       ],
     ),
