@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
-// TODO: Delete?
+@immutable
 class AppUser {
   const AppUser({
     @required this.uid,
