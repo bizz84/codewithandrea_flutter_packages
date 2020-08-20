@@ -2,13 +2,12 @@ library google_sign_in_service;
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_service/firebase_auth_service.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInService {
   Future<AppUser> signInWithGoogle() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    final googleSignIn = GoogleSignIn();
+    final googleUser = await googleSignIn.signIn();
 
     if (googleUser != null) {
       final GoogleSignInAuthentication googleAuth =
@@ -22,16 +21,18 @@ class GoogleSignInService {
         ));
         return AppUser.fromFirebaseUser(userCredential.user);
       } else {
-        // TODO: Some kind of FirebaseException
         throw FirebaseException(
-          plugin: 'GoogleSignInService',
-          message: 'Missing Google ID Token',
+          plugin: runtimeType.toString(),
           code: 'ERROR_MISSING_GOOGLE_ID_TOKEN',
+          message: 'Missing Google ID Token',
         );
       }
     } else {
-      throw PlatformException(
-          code: 'ERROR_ABORTED_BY_USER', message: 'Sign in aborted by user');
+      throw FirebaseException(
+        plugin: runtimeType.toString(),
+        code: 'ERROR_ABORTED_BY_USER',
+        message: 'Sign in aborted by user',
+      );
     }
   }
 }
