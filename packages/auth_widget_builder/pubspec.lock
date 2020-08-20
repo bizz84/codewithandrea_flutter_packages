@@ -74,9 +74,11 @@ packages:
   firebase_auth_service:
     dependency: "direct main"
     description:
-      path: "../firebase_auth_service"
-      relative: true
-    source: path
+      path: "packages/firebase_auth_service"
+      ref: update-firebase-packages
+      resolved-ref: add6ec7df98b17758831c2f534aa66872d2ed494
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.1.0"
   firebase_auth_web:
     dependency: transitive
@@ -127,7 +129,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1"
+    version: "0.12.2"
   http_parser:
     dependency: transitive
     description:
@@ -148,7 +150,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1+1"
+    version: "0.6.2"
   matcher:
     dependency: transitive
     description:

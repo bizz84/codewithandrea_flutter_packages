@@ -4,9 +4,11 @@ packages:
   alert_dialogs:
     dependency: "direct main"
     description:
-      path: "../alert_dialogs"
-      relative: true
-    source: path
+      path: "packages/alert_dialogs"
+      ref: update-firebase-packages
+      resolved-ref: adca00853ce19032e1cfa71ba17f42ec0b507ca2
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.0.1"
   async:
     dependency: transitive
@@ -53,9 +55,11 @@ packages:
   custom_buttons:
     dependency: "direct main"
     description:
-      path: "../custom_buttons"
-      relative: true
-    source: path
+      path: "packages/custom_buttons"
+      ref: update-firebase-packages
+      resolved-ref: adca00853ce19032e1cfa71ba17f42ec0b507ca2
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.0.1"
   fake_async:
     dependency: transitive
@@ -88,9 +92,11 @@ packages:
   firebase_auth_service:
     dependency: "direct main"
     description:
-      path: "../firebase_auth_service"
-      relative: true
-    source: path
+      path: "packages/firebase_auth_service"
+      ref: update-firebase-packages
+      resolved-ref: adca00853ce19032e1cfa71ba17f42ec0b507ca2
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.1.0"
   firebase_auth_web:
     dependency: transitive
@@ -178,7 +184,7 @@ packages:
     source: hosted
     version: "1.1.8"
   mockito:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: mockito
       url: "https://pub.dartlang.org"
@@ -218,7 +224,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.2"
+    version: "4.3.2"
   quiver:
     dependency: transitive
     description:
@@ -262,9 +268,11 @@ packages:
   string_validators:
     dependency: "direct main"
     description:
-      path: "../string_validators"
-      relative: true
-    source: path
+      path: "packages/string_validators"
+      ref: update-firebase-packages
+      resolved-ref: adca00853ce19032e1cfa71ba17f42ec0b507ca2
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.0.1"
   term_glyph:
     dependency: transitive

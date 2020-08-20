@@ -74,9 +74,11 @@ packages:
   firebase_auth_service:
     dependency: "direct main"
     description:
-      path: "../firebase_auth_service"
-      relative: true
-    source: path
+      path: "packages/firebase_auth_service"
+      ref: update-firebase-packages
+      resolved-ref: adca00853ce19032e1cfa71ba17f42ec0b507ca2
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.1.0"
   firebase_auth_web:
     dependency: transitive
