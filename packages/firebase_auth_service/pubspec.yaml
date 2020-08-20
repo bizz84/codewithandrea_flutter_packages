@@ -1,6 +1,6 @@
 name: firebase_auth_service
 description: Wrapper package for FirebaseAuth
-version: 0.0.1
+version: 0.1.0
 author: null
 homepage: null
 

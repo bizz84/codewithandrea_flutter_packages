@@ -14,18 +14,18 @@ class AuthWidgetBuilder extends StatelessWidget {
     @required this.builder,
     this.userProvidersBuilder,
   }) : super(key: key);
-  final Widget Function(BuildContext, AsyncSnapshot<User>) builder;
-  final List<SingleChildWidget> Function(BuildContext, User)
+  final Widget Function(BuildContext, AsyncSnapshot<AppUser>) builder;
+  final List<SingleChildWidget> Function(BuildContext, AppUser)
       userProvidersBuilder;
 
   @override
   Widget build(BuildContext context) {
     final authService =
         Provider.of<FirebaseAuthService>(context, listen: false);
-    return StreamBuilder<User>(
+    return StreamBuilder<AppUser>(
       stream: authService.onAuthStateChanged,
       builder: (context, snapshot) {
-        final User user = snapshot.data;
+        final AppUser user = snapshot.data;
         if (user != null) {
           return MultiProvider(
             providers: userProvidersBuilder != null
@@ -51,7 +51,7 @@ class AuthWidget extends StatelessWidget {
     @required this.signedInBuilder,
     @required this.nonSignedInBuilder,
   }) : super(key: key);
-  final AsyncSnapshot<User> userSnapshot;
+  final AsyncSnapshot<AppUser> userSnapshot;
   final WidgetBuilder nonSignedInBuilder;
   final WidgetBuilder signedInBuilder;
 

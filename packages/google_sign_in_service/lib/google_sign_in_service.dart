@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInService {
-  Future<User> signInWithGoogle() async {
+  Future<AppUser> signInWithGoogle() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount googleUser = await googleSignIn.signIn();
 
@@ -14,17 +14,20 @@ class GoogleSignInService {
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
       if (googleAuth.idToken != null) {
-        final AuthResult authResult = await FirebaseAuth.instance
-            .signInWithCredential(GoogleAuthProvider.getCredential(
+        final userCredential = await FirebaseAuth.instance
+            .signInWithCredential(GoogleAuthProvider.credential(
           idToken: googleAuth.idToken,
           // Note: Access token is null when running on web, so we don't check for it above
           accessToken: googleAuth.accessToken,
         ));
-        return User.fromFirebaseUser(authResult.user);
+        return AppUser.fromFirebaseUser(userCredential.user);
       } else {
-        throw PlatformException(
-            code: 'ERROR_MISSING_GOOGLE_ID_TOKEN',
-            message: 'Missing Google ID Token');
+        // TODO: Some kind of FirebaseException
+        throw FirebaseException(
+          plugin: 'GoogleSignInService',
+          message: 'Missing Google ID Token',
+          code: 'ERROR_MISSING_GOOGLE_ID_TOKEN',
+        );
       }
     } else {
       throw PlatformException(

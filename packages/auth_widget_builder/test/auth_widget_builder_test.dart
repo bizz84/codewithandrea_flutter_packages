@@ -12,11 +12,11 @@ class MockAuthService extends Mock implements FirebaseAuthService {}
 void main() {
   group('AuthWidgetBuilder tests', () {
     MockAuthService mockAuthService;
-    StreamController<User> onAuthStateChangedController;
+    StreamController<AppUser> onAuthStateChangedController;
 
     setUp(() {
       mockAuthService = MockAuthService();
-      onAuthStateChangedController = StreamController<User>();
+      onAuthStateChangedController = StreamController<AppUser>();
     });
 
     tearDown(() {
@@ -24,9 +24,9 @@ void main() {
       onAuthStateChangedController.close();
     });
 
-    void stubOnAuthStateChangedYields(Iterable<User> onAuthStateChanged) {
+    void stubOnAuthStateChangedYields(Iterable<AppUser> onAuthStateChanged) {
       onAuthStateChangedController
-          .addStream(Stream<User>.fromIterable(onAuthStateChanged));
+          .addStream(Stream<AppUser>.fromIterable(onAuthStateChanged));
       when(mockAuthService.onAuthStateChanged).thenAnswer((_) {
         return onAuthStateChangedController.stream;
       });
@@ -35,7 +35,7 @@ void main() {
     Future<void> pumpAuthWidget(
         WidgetTester tester,
         {@required
-            Widget Function(BuildContext, AsyncSnapshot<User>) builder}) async {
+            Widget Function(BuildContext, AsyncSnapshot<AppUser>) builder}) async {
       await tester.pumpWidget(
         Provider<FirebaseAuthService>(
           create: (_) => mockAuthService,
@@ -51,15 +51,15 @@ void main() {
         'WHEN onAuthStateChanged in waiting state'
         'THEN calls builder with snapshot in waiting state'
         'AND doesn\'t find MultiProvider', (tester) async {
-      stubOnAuthStateChangedYields(<User>[]);
+      stubOnAuthStateChangedYields(<AppUser>[]);
 
-      final snapshots = <AsyncSnapshot<User>>[];
+      final snapshots = <AsyncSnapshot<AppUser>>[];
       await pumpAuthWidget(tester, builder: (context, userSnapshot) {
         snapshots.add(userSnapshot);
         return Container();
       });
       expect(snapshots, [
-        const AsyncSnapshot<User>.withData(ConnectionState.waiting, null),
+        const AsyncSnapshot<AppUser>.withData(ConnectionState.waiting, null),
       ]);
       expect(find.byType(MultiProvider), findsNothing);
     });
@@ -68,16 +68,16 @@ void main() {
         'WHEN onAuthStateChanged returns null user'
         'THEN calls builder with null user and active state'
         'AND doesn\'t find MultiProvider', (tester) async {
-      stubOnAuthStateChangedYields(<User>[null]);
+      stubOnAuthStateChangedYields(<AppUser>[null]);
 
-      final snapshots = <AsyncSnapshot<User>>[];
+      final snapshots = <AsyncSnapshot<AppUser>>[];
       await pumpAuthWidget(tester, builder: (context, userSnapshot) {
         snapshots.add(userSnapshot);
         return Container();
       });
       expect(snapshots, [
-        const AsyncSnapshot<User>.withData(ConnectionState.waiting, null),
-        const AsyncSnapshot<User>.withData(ConnectionState.active, null),
+        const AsyncSnapshot<AppUser>.withData(ConnectionState.waiting, null),
+        const AsyncSnapshot<AppUser>.withData(ConnectionState.active, null),
       ]);
       expect(find.byType(MultiProvider), findsNothing);
     });
@@ -86,17 +86,17 @@ void main() {
         'WHEN onAuthStateChanged returns valid user'
         'THEN calls builder with same user and active state'
         'AND finds MultiProvider', (tester) async {
-      const user = User(uid: '123');
-      stubOnAuthStateChangedYields(<User>[user]);
+      const user = AppUser(uid: '123');
+      stubOnAuthStateChangedYields(<AppUser>[user]);
 
-      final snapshots = <AsyncSnapshot<User>>[];
+      final snapshots = <AsyncSnapshot<AppUser>>[];
       await pumpAuthWidget(tester, builder: (context, userSnapshot) {
         snapshots.add(userSnapshot);
         return Container();
       });
       expect(snapshots, [
-        const AsyncSnapshot<User>.withData(ConnectionState.waiting, null),
-        const AsyncSnapshot<User>.withData(ConnectionState.active, user),
+        const AsyncSnapshot<AppUser>.withData(ConnectionState.waiting, null),
+        const AsyncSnapshot<AppUser>.withData(ConnectionState.active, user),
       ]);
       expect(find.byType(MultiProvider), findsOneWidget);
       // Skipping as the last expectation fails
