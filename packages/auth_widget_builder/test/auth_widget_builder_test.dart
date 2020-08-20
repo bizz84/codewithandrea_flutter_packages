@@ -27,7 +27,7 @@ void main() {
     void stubOnAuthStateChangedYields(Iterable<AppUser> onAuthStateChanged) {
       onAuthStateChangedController
           .addStream(Stream<AppUser>.fromIterable(onAuthStateChanged));
-      when(mockAuthService.onAuthStateChanged).thenAnswer((_) {
+      when(mockAuthService.authStateChanges()).thenAnswer((_) {
         return onAuthStateChangedController.stream;
       });
     }
@@ -35,7 +35,8 @@ void main() {
     Future<void> pumpAuthWidget(
         WidgetTester tester,
         {@required
-            Widget Function(BuildContext, AsyncSnapshot<AppUser>) builder}) async {
+            Widget Function(BuildContext, AsyncSnapshot<AppUser>)
+                builder}) async {
       await tester.pumpWidget(
         Provider<FirebaseAuthService>(
           create: (_) => mockAuthService,

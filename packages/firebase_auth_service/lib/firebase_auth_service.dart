@@ -4,17 +4,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
+// TODO: Delete?
 class AppUser {
   const AppUser({
     @required this.uid,
     this.email,
-    this.photoUrl,
+    this.photoURL,
     this.displayName,
   }) : assert(uid != null, 'User can only be created with a non-null uid');
 
   final String uid;
   final String email;
-  final String photoUrl;
+  final String photoURL;
   final String displayName;
 
   factory AppUser.fromFirebaseUser(User user) {
@@ -25,22 +26,22 @@ class AppUser {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoUrl: user.photoURL,
+      photoURL: user.photoURL,
     );
   }
 
   @override
   String toString() =>
-      'uid: $uid, email: $email, photoUrl: $photoUrl, displayName: $displayName';
+      'uid: $uid, email: $email, photoUrl: $photoURL, displayName: $displayName';
 }
 
 class FirebaseAuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Stream<AppUser> get onAuthStateChanged {
+  Stream<AppUser> authStateChanges() {
     return _firebaseAuth
         .authStateChanges()
-        .map((firebaseUser) => AppUser.fromFirebaseUser(firebaseUser));
+        .map((user) => AppUser.fromFirebaseUser(user));
   }
 
   Future<AppUser> signInAnonymously() async {

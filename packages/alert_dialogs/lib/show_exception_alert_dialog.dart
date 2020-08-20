@@ -13,13 +13,13 @@ Future<void> showExceptionAlertDialog({
     );
 
 String _message(dynamic exception) {
-  if (exception is PlatformException) {
+  if (exception is FirebaseException) {
     if (exception.message == 'FIRFirestoreErrorDomain') {
       if (exception.code == 'Code 7') {
         // This happens when we get a "Missing or insufficient permissions" error
         return 'This operation could not be completed due to a server error';
       }
-      return exception.details as String;
+      return exception.message;
     }
     return _errors[exception.code] ?? exception.message;
   }
