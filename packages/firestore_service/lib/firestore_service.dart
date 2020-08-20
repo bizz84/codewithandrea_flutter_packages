@@ -36,7 +36,7 @@ class FirestoreService {
     final Stream<QuerySnapshot> snapshots = query.snapshots();
     return snapshots.map((snapshot) {
       final result = snapshot.docs
-          .map((snapshot) => builder(snapshot.data, snapshot.id))
+          .map((snapshot) => builder(snapshot.data(), snapshot.id))
           .where((value) => value != null)
           .toList();
       if (sort != null) {
@@ -52,6 +52,6 @@ class FirestoreService {
   }) {
     final DocumentReference reference = FirebaseFirestore.instance.doc(path);
     final Stream<DocumentSnapshot> snapshots = reference.snapshots();
-    return snapshots.map((snapshot) => builder(snapshot.data, snapshot.id));
+    return snapshots.map((snapshot) => builder(snapshot.data(), snapshot.id));
   }
 }
