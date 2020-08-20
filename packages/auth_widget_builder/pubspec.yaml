@@ -15,7 +15,6 @@ dependencies:
     git:
       url: https://github.com/bizz84/codewithandrea_flutter_packages
       path: packages/firebase_auth_service
-      ref: update-firebase-packages
   provider: ^4.3.2
 
 dev_dependencies:
