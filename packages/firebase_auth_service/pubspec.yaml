@@ -1,8 +1,8 @@
 name: firebase_auth_service
 description: Wrapper package for FirebaseAuth
 version: 0.1.0
-author: null
-homepage: null
+author: Andrea Bizzotto
+homepage: https://www.codewithandrea.com
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

@@ -1,8 +1,8 @@
 name: email_password_sign_in_ui
 description: A new Flutter package project.
 version: 0.1.0
-author: null
-homepage: null
+author: Andrea Bizzotto
+homepage: https://www.codewithandrea.com
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_auth: null
   firebase_auth_service:
     #path: ../firebase_auth_service
     git:
