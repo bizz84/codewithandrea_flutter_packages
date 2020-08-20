@@ -6,7 +6,7 @@ packages:
     description:
       path: "packages/alert_dialogs"
       ref: HEAD
-      resolved-ref: "64550ae5b87ab9f8a6c72719aa4027ba8e375fb1"
+      resolved-ref: d8e88e000935345ebacc31e1176c1e4d226fb18a
       url: "https://github.com/bizz84/codewithandrea_flutter_packages"
     source: git
     version: "0.1.0"
