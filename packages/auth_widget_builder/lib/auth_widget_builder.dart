@@ -26,15 +26,13 @@ class AuthWidgetBuilder extends StatelessWidget {
       stream: authService.authStateChanges(),
       builder: (context, snapshot) {
         final AppUser user = snapshot.data;
-        if (user != null) {
-          return MultiProvider(
-            providers: userProvidersBuilder != null
-                ? userProvidersBuilder(context, user)
-                : [],
-            child: builder(context, snapshot),
-          );
+        if (user == null || userProvidersBuilder == null) {
+          return builder(context, snapshot);
         }
-        return builder(context, snapshot);
+        return MultiProvider(
+          providers: userProvidersBuilder(context, user),
+          child: builder(context, snapshot),
+        );
       },
     );
   }
