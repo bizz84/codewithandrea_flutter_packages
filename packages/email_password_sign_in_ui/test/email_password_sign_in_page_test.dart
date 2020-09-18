@@ -1,12 +1,13 @@
 import 'package:email_password_sign_in_ui/email_password_sign_in_ui.dart';
-import 'package:firebase_auth_service/firebase_auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:provider/provider.dart';
 
-class MockAuthService extends Mock implements FirebaseAuthService {}
+class MockAuthService extends Mock implements FirebaseAuth {}
+
+class MockUserCredential extends Mock implements UserCredential {}
 
 void main() {
   MockAuthService mockAuth;
@@ -18,14 +19,12 @@ void main() {
   Future<void> pumpEmailSignInForm(WidgetTester tester,
       {VoidCallback onSignedIn}) async {
     await tester.pumpWidget(
-      Provider<FirebaseAuthService>(
-        create: (_) => mockAuth,
-        child: MaterialApp(
-          home: Scaffold(
-            body: Builder(
-              builder: (_) => EmailPasswordSignInPage(
-                onSignedIn: onSignedIn,
-              ),
+      MaterialApp(
+        home: Scaffold(
+          body: Builder(
+            builder: (_) => EmailPasswordSignInPage(
+              model: EmailPasswordSignInModel(firebaseAuth: mockAuth),
+              onSignedIn: onSignedIn,
             ),
           ),
         ),
@@ -34,27 +33,29 @@ void main() {
   }
 
   void stubSignInWithEmailAndPasswordSucceeds() {
-    when(mockAuth.signInWithEmailAndPassword(any, any))
-        .thenAnswer((_) => Future<AppUser>.value(const AppUser(uid: '123')));
+    when(mockAuth.signInWithCredential(any))
+        .thenAnswer((_) => Future<UserCredential>.value(MockUserCredential()));
   }
 
   void stubSignInWithEmailAndPasswordThrows() {
-    when(mockAuth.signInWithEmailAndPassword(any, any))
+    when(mockAuth.signInWithCredential(any))
         .thenThrow(PlatformException(code: 'ERROR_WRONG_PASSWORD'));
   }
 
   void stubCreateUserWithEmailAndPasswordSucceeds() {
-    when(mockAuth.createUserWithEmailAndPassword(any, any))
-        .thenAnswer((_) => Future<AppUser>.value(const AppUser(uid: '123')));
+    when(mockAuth.createUserWithEmailAndPassword(
+            email: anyNamed('email'), password: anyNamed('password')))
+        .thenAnswer((_) => Future<UserCredential>.value(MockUserCredential()));
   }
 
   void stubCreateUserWithEmailAndPasswordThrows() {
-    when(mockAuth.createUserWithEmailAndPassword(any, any))
+    when(mockAuth.createUserWithEmailAndPassword(
+            email: anyNamed('email'), password: anyNamed('password')))
         .thenThrow(PlatformException(code: 'ERROR_EMAIL_ALREADY_IN_USE'));
   }
 
   void stubSendPasswordResetEmailSucceeds() {
-    when(mockAuth.sendPasswordResetEmail(any))
+    when(mockAuth.sendPasswordResetEmail(email: anyNamed('email')))
         .thenAnswer((_) => Future<void>.value());
   }
 
@@ -70,7 +71,7 @@ void main() {
       expect(primaryButton, findsOneWidget);
       await tester.tap(primaryButton);
 
-      verifyNever(mockAuth.signInWithEmailAndPassword(any, any));
+      verifyNever(mockAuth.signInWithCredential(any));
       expect(signedIn, false);
     });
 
@@ -102,7 +103,7 @@ void main() {
       expect(primaryButton, findsOneWidget);
       await tester.tap(primaryButton);
 
-      verify(mockAuth.signInWithEmailAndPassword(email, password)).called(1);
+      verify(mockAuth.signInWithCredential(any)).called(1);
       expect(signedIn, true);
     });
 
@@ -134,7 +135,7 @@ void main() {
       expect(primaryButton, findsOneWidget);
       await tester.tap(primaryButton);
 
-      verify(mockAuth.signInWithEmailAndPassword(email, password)).called(1);
+      verify(mockAuth.signInWithCredential(any)).called(1);
       expect(signedIn, false);
     });
   });
@@ -155,7 +156,8 @@ void main() {
           find.text(EmailPasswordSignInStrings.createAnAccount);
       expect(signInButton, findsOneWidget);
 
-      verifyNever(mockAuth.createUserWithEmailAndPassword(any, any));
+      verifyNever(mockAuth.createUserWithEmailAndPassword(
+          email: anyNamed('email'), password: anyNamed('password')));
       expect(signedIn, false);
     });
 
@@ -192,7 +194,8 @@ void main() {
       expect(createAccountButton, findsOneWidget);
       await tester.tap(createAccountButton);
 
-      verify(mockAuth.createUserWithEmailAndPassword(email, password))
+      verify(mockAuth.createUserWithEmailAndPassword(
+              email: email, password: password))
           .called(1);
       expect(signedIn, true);
     });
@@ -230,7 +233,8 @@ void main() {
       expect(createAccountButton, findsOneWidget);
       await tester.tap(createAccountButton);
 
-      verify(mockAuth.createUserWithEmailAndPassword(email, password))
+      verify(mockAuth.createUserWithEmailAndPassword(
+              email: email, password: password))
           .called(1);
       expect(signedIn, false);
     });
@@ -252,7 +256,7 @@ void main() {
           find.text(EmailPasswordSignInStrings.sendResetLink);
       expect(sendResetPasswordButton, findsOneWidget);
 
-      verifyNever(mockAuth.sendPasswordResetEmail(any));
+      verifyNever(mockAuth.sendPasswordResetEmail(email: anyNamed('email')));
       expect(signedIn, false);
     });
   });
@@ -285,7 +289,7 @@ void main() {
     expect(sendResetLinkButton, findsOneWidget);
     await tester.tap(sendResetLinkButton);
 
-    verify(mockAuth.sendPasswordResetEmail(email)).called(1);
+    verify(mockAuth.sendPasswordResetEmail(email: email)).called(1);
     expect(signedIn, false);
   });
 

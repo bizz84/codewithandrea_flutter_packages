@@ -14,14 +14,14 @@ class EmailAndPasswordValidators {
 
 class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
   EmailPasswordSignInModel({
-    @required this.auth,
+    @required this.firebaseAuth,
     this.email = '',
     this.password = '',
     this.formType = EmailPasswordSignInFormType.signIn,
     this.isLoading = false,
     this.submitted = false,
   });
-  final FirebaseAuthService auth;
+  final FirebaseAuth firebaseAuth;
 
   String email;
   String password;
@@ -38,13 +38,15 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
       updateWith(isLoading: true);
       switch (formType) {
         case EmailPasswordSignInFormType.signIn:
-          await auth.signInWithEmailAndPassword(email, password);
+          await firebaseAuth.signInWithCredential(
+              EmailAuthProvider.credential(email: email, password: password));
           break;
         case EmailPasswordSignInFormType.register:
-          await auth.createUserWithEmailAndPassword(email, password);
+          await firebaseAuth.createUserWithEmailAndPassword(
+              email: email, password: password);
           break;
         case EmailPasswordSignInFormType.forgotPassword:
-          await auth.sendPasswordResetEmail(email);
+          await firebaseAuth.sendPasswordResetEmail(email: email);
           updateWith(isLoading: false);
           break;
       }
