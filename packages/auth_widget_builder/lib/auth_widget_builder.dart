@@ -1,8 +1,8 @@
-library custom_buttons;
+library auth_widget_builder;
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_auth_service/firebase_auth_service.dart';
 import 'package:provider/single_child_widget.dart';
 
 /// Used to create user-dependent objects that need to be accessible by all widgets.
@@ -14,18 +14,17 @@ class AuthWidgetBuilder extends StatelessWidget {
     @required this.builder,
     this.userProvidersBuilder,
   }) : super(key: key);
-  final Widget Function(BuildContext, AsyncSnapshot<AppUser>) builder;
-  final List<SingleChildWidget> Function(BuildContext, AppUser)
+  final Widget Function(BuildContext, AsyncSnapshot<User>) builder;
+  final List<SingleChildWidget> Function(BuildContext, User)
       userProvidersBuilder;
 
   @override
   Widget build(BuildContext context) {
-    final authService =
-        Provider.of<FirebaseAuthService>(context, listen: false);
-    return StreamBuilder<AppUser>(
-      stream: authService.authStateChanges(),
+    final firebaseAuth = Provider.of<FirebaseAuth>(context, listen: false);
+    return StreamBuilder<User>(
+      stream: firebaseAuth.authStateChanges(),
       builder: (context, snapshot) {
-        final AppUser user = snapshot.data;
+        final User user = snapshot.data;
         if (user != null) {
           return MultiProvider(
             providers: userProvidersBuilder != null
@@ -51,7 +50,7 @@ class AuthWidget extends StatelessWidget {
     @required this.signedInBuilder,
     @required this.nonSignedInBuilder,
   }) : super(key: key);
-  final AsyncSnapshot<AppUser> userSnapshot;
+  final AsyncSnapshot<User> userSnapshot;
   final WidgetBuilder nonSignedInBuilder;
   final WidgetBuilder signedInBuilder;
 

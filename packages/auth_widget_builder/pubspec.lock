@@ -58,7 +58,7 @@ packages:
     source: hosted
     version: "7.3.0"
   firebase_auth:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: firebase_auth
       url: "https://pub.dartlang.org"
@@ -71,15 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  firebase_auth_service:
-    dependency: "direct main"
-    description:
-      path: "packages/firebase_auth_service"
-      ref: HEAD
-      resolved-ref: "64550ae5b87ab9f8a6c72719aa4027ba8e375fb1"
-      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
-    source: git
-    version: "0.1.0"
   firebase_auth_web:
     dependency: transitive
     description:
@@ -206,7 +197,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.2"
+    version: "4.3.2+2"
   quiver:
     dependency: transitive
     description:
