@@ -6,8 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 class MockAuthService extends Mock implements FirebaseAuth {}
 
 void main() {
-  MockAuthService mockAuthService;
-  EmailPasswordSignInModel model;
+  late MockAuthService mockAuthService;
+  late EmailPasswordSignInModel model;
 
   setUp(() {
     mockAuthService = MockAuthService();
