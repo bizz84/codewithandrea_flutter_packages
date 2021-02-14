@@ -1,36 +1,36 @@
 name: email_password_sign_in_ui
 description: A new Flutter package project.
-version: 0.2.0
+version: 0.3.0-nullsafety.1
 author: Andrea Bizzotto
 homepage: https://www.codewithandrea.com
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  firebase_auth: ^0.18.0+1
+  firebase_auth: ^0.21.0-nullsafety.0
   alert_dialogs:
-    #path: ../alert_dialogs
-    git:
-      url: https://github.com/bizz84/codewithandrea_flutter_packages
-      path: packages/alert_dialogs
+    path: ../alert_dialogs
+    #git:
+    #  url: https://github.com/bizz84/codewithandrea_flutter_packages
+    #  path: packages/alert_dialogs
   custom_buttons:
-    #path: ../custom_buttons
-    git:
-      url: https://github.com/bizz84/codewithandrea_flutter_packages
-      path: packages/custom_buttons
+    path: ../custom_buttons
+    #git:
+    #  url: https://github.com/bizz84/codewithandrea_flutter_packages
+    #  path: packages/custom_buttons
   string_validators:
-    #path: ../string_validators
-    git:
-      url: https://github.com/bizz84/codewithandrea_flutter_packages
-      path: packages/string_validators
+    path: ../string_validators
+    #git:
+    #  url: https://github.com/bizz84/codewithandrea_flutter_packages
+    #  path: packages/string_validators
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^4.1.1
+  mockito: ^5.0.0-nullsafety.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

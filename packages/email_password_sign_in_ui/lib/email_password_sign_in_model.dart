@@ -14,7 +14,7 @@ class EmailAndPasswordValidators {
 
 class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
   EmailPasswordSignInModel({
-    @required this.firebaseAuth,
+    required this.firebaseAuth,
     this.email = '',
     this.password = '',
     this.formType = EmailPasswordSignInFormType.signIn,
@@ -72,11 +72,11 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
   }
 
   void updateWith({
-    String email,
-    String password,
-    EmailPasswordSignInFormType formType,
-    bool isLoading,
-    bool submitted,
+    String? email,
+    String? password,
+    EmailPasswordSignInFormType? formType,
+    bool? isLoading,
+    bool? submitted,
   }) {
     this.email = email ?? this.email;
     this.password = password ?? this.password;
@@ -101,7 +101,7 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
       EmailPasswordSignInFormType.signIn: EmailPasswordSignInStrings.signIn,
       EmailPasswordSignInFormType.forgotPassword:
           EmailPasswordSignInStrings.sendResetLink,
-    }[formType];
+    }[formType]!;
   }
 
   String get secondaryButtonText {
@@ -112,7 +112,7 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
           EmailPasswordSignInStrings.needAnAccount,
       EmailPasswordSignInFormType.forgotPassword:
           EmailPasswordSignInStrings.backToSignIn,
-    }[formType];
+    }[formType]!;
   }
 
   EmailPasswordSignInFormType get secondaryActionFormType {
@@ -121,7 +121,7 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
       EmailPasswordSignInFormType.signIn: EmailPasswordSignInFormType.register,
       EmailPasswordSignInFormType.forgotPassword:
           EmailPasswordSignInFormType.signIn,
-    }[formType];
+    }[formType]!;
   }
 
   String get errorAlertTitle {
@@ -132,7 +132,7 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
           EmailPasswordSignInStrings.signInFailed,
       EmailPasswordSignInFormType.forgotPassword:
           EmailPasswordSignInStrings.passwordResetFailed,
-    }[formType];
+    }[formType]!;
   }
 
   String get title {
@@ -141,7 +141,7 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
       EmailPasswordSignInFormType.signIn: EmailPasswordSignInStrings.signIn,
       EmailPasswordSignInFormType.forgotPassword:
           EmailPasswordSignInStrings.forgotPassword,
-    }[formType];
+    }[formType]!;
   }
 
   bool get canSubmitEmail {
@@ -163,7 +163,7 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
     return canSubmitFields && !isLoading;
   }
 
-  String get emailErrorText {
+  String? get emailErrorText {
     final bool showErrorText = submitted && !canSubmitEmail;
     final String errorText = email.isEmpty
         ? EmailPasswordSignInStrings.invalidEmailEmpty
@@ -171,7 +171,7 @@ class EmailPasswordSignInModel with EmailAndPasswordValidators, ChangeNotifier {
     return showErrorText ? errorText : null;
   }
 
-  String get passwordErrorText {
+  String? get passwordErrorText {
     final bool showErrorText = submitted && !canSubmitPassword;
     final String errorText = password.isEmpty
         ? EmailPasswordSignInStrings.invalidPasswordEmpty
