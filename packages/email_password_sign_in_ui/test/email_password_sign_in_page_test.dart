@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 
-class MockAuthService extends Mock implements FirebaseAuth {}
+import 'email_password_sign_in_page_test.mocks.dart';
 
-class MockUserCredential extends Mock implements UserCredential {}
-
+// https://github.com/dart-lang/mockito/blob/master/NULL_SAFETY_README.md
+@GenerateMocks([FirebaseAuth, UserCredential])
 void main() {
-  late MockAuthService mockAuth;
+  late MockFirebaseAuth mockAuth;
 
   setUp(() {
-    mockAuth = MockAuthService();
+    mockAuth = MockFirebaseAuth();
   });
 
   Future<void> pumpEmailSignInForm(WidgetTester tester,
@@ -76,7 +77,7 @@ void main() {
           EmailAuthProvider.credential(email: '', password: '');
       verifyNever(mockAuth.signInWithCredential(authCredential));
       expect(signedIn, false);
-    }, skip: true);
+    });
 
     testWidgets(
         'WHEN user enters valid email and password'
@@ -110,6 +111,8 @@ void main() {
 
       verify(mockAuth.signInWithCredential(authCredential)).called(1);
       expect(signedIn, true);
+      // Disable test due to: MissingStubError (MissingStubError: 'toString'
+      // No stub was found which matches the arguments of this method call: toString()
     }, skip: true);
 
     testWidgets(
@@ -144,6 +147,8 @@ void main() {
 
       verify(mockAuth.signInWithCredential(authCredential)).called(1);
       expect(signedIn, false);
+      // Disable test due to: MissingStubError (MissingStubError: 'toString'
+      // No stub was found which matches the arguments of this method call: toString()
     }, skip: true);
   });
 
@@ -166,7 +171,7 @@ void main() {
       verifyNever(
           mockAuth.createUserWithEmailAndPassword(email: '', password: ''));
       expect(signedIn, false);
-    }, skip: true);
+    });
 
     testWidgets(
         'WHEN user taps on the `need account` button'
@@ -205,7 +210,7 @@ void main() {
               email: email, password: password))
           .called(1);
       expect(signedIn, true);
-    }, skip: true);
+    });
 
     testWidgets(
         'WHEN user taps on the `need account` button'
@@ -244,7 +249,7 @@ void main() {
               email: email, password: password))
           .called(1);
       expect(signedIn, false);
-    }, skip: true);
+    });
   });
 
   group('forgot password', () {
@@ -265,7 +270,7 @@ void main() {
 
       verifyNever(mockAuth.sendPasswordResetEmail(email: ''));
       expect(signedIn, false);
-    }, skip: true);
+    });
   });
 
   testWidgets(
@@ -298,7 +303,7 @@ void main() {
 
     verify(mockAuth.sendPasswordResetEmail(email: email)).called(1);
     expect(signedIn, false);
-  }, skip: true);
+  });
 
   // TODO: Error presentation tests
 }
