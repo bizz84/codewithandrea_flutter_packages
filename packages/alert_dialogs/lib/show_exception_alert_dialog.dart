@@ -12,12 +12,12 @@ Future<void> showExceptionAlertDialog({
       defaultActionText: 'OK',
     );
 
-String? _message(dynamic exception) {
+String _message(dynamic exception) {
   if (exception is FirebaseException) {
-    return exception.message;
+    return exception.message ?? exception.toString();
   }
   if (exception is PlatformException) {
-    return exception.message;
+    return exception.message ?? exception.toString();
   }
   return exception.toString();
 }
