@@ -1,11 +1,11 @@
 part of alert_dialogs;
 
-Future<bool> showAlertDialog({
-  @required BuildContext context,
-  @required String title,
-  @required String content,
-  String cancelActionText,
-  @required String defaultActionText,
+Future<bool?> showAlertDialog({
+  required BuildContext context,
+  required String title,
+  required String content,
+  String? cancelActionText,
+  required String defaultActionText,
 }) async {
   if (kIsWeb || !Platform.isIOS) {
     return showDialog(
