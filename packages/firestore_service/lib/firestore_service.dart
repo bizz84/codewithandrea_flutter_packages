@@ -1,7 +1,6 @@
 library firestore_service;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 
 class FirestoreService {
   FirestoreService._();
