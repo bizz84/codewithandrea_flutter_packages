@@ -11,9 +11,11 @@ packages:
   alert_dialogs:
     dependency: "direct main"
     description:
-      path: "../alert_dialogs"
-      relative: true
-    source: path
+      path: "packages/alert_dialogs"
+      ref: HEAD
+      resolved-ref: d40f4cc52ccc20353833845f1d44fb66e794f4a0
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.2.0"
   analyzer:
     dependency: transitive
@@ -165,9 +167,11 @@ packages:
   custom_buttons:
     dependency: "direct main"
     description:
-      path: "../custom_buttons"
-      relative: true
-    source: path
+      path: "packages/custom_buttons"
+      ref: HEAD
+      resolved-ref: d40f4cc52ccc20353833845f1d44fb66e794f4a0
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
     version: "0.1.0"
   dart_style:
     dependency: transitive
@@ -465,10 +469,12 @@ packages:
   string_validators:
     dependency: "direct main"
     description:
-      path: "../string_validators"
-      relative: true
-    source: path
-    version: "0.1.0-nullsafety.1"
+      path: "packages/string_validators"
+      ref: HEAD
+      resolved-ref: d40f4cc52ccc20353833845f1d44fb66e794f4a0
+      url: "https://github.com/bizz84/codewithandrea_flutter_packages"
+    source: git
+    version: "0.1.0"
   term_glyph:
     dependency: transitive
     description:
