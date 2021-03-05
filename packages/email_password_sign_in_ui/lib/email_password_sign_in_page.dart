@@ -2,13 +2,13 @@ part of email_password_sign_in_ui;
 
 class EmailPasswordSignInPage extends StatefulWidget {
   const EmailPasswordSignInPage(
-      {Key key, @required this.model, this.onSignedIn})
+      {Key? key, required this.model, this.onSignedIn})
       : super(key: key);
   final EmailPasswordSignInModel model;
-  final VoidCallback onSignedIn;
+  final VoidCallback? onSignedIn;
 
   factory EmailPasswordSignInPage.withFirebaseAuth(FirebaseAuth firebaseAuth,
-      {@required VoidCallback onSignedIn}) {
+      {VoidCallback? onSignedIn}) {
     return EmailPasswordSignInPage(
       model: EmailPasswordSignInModel(firebaseAuth: firebaseAuth),
       onSignedIn: onSignedIn,
@@ -64,7 +64,7 @@ class _EmailPasswordSignInPageState extends State<EmailPasswordSignInPage> {
           );
         } else {
           if (widget.onSignedIn != null) {
-            widget.onSignedIn();
+            widget.onSignedIn?.call();
           }
         }
       }

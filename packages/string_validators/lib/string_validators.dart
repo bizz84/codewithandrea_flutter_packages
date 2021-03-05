@@ -7,7 +7,7 @@ abstract class StringValidator {
 }
 
 class RegexValidator implements StringValidator {
-  RegexValidator({this.regexSource});
+  RegexValidator({required this.regexSource});
   final String regexSource;
 
   @override
@@ -31,7 +31,7 @@ class RegexValidator implements StringValidator {
 }
 
 class ValidatorInputFormatter implements TextInputFormatter {
-  ValidatorInputFormatter({this.editingValidator});
+  ValidatorInputFormatter({required this.editingValidator});
   final StringValidator editingValidator;
 
   @override

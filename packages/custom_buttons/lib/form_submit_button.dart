@@ -2,10 +2,10 @@ part of custom_buttons;
 
 class FormSubmitButton extends CustomRaisedButton {
   FormSubmitButton({
-    Key key,
-    String text,
+    Key? key,
+    required String text,
     bool loading = false,
-    VoidCallback onPressed,
+    VoidCallback? onPressed,
   }) : super(
           key: key,
           child: Text(

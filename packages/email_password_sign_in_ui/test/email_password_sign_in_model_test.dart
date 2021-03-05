@@ -3,14 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockAuthService extends Mock implements FirebaseAuth {}
+import 'email_password_sign_in_page_test.mocks.dart';
 
 void main() {
-  MockAuthService mockAuthService;
-  EmailPasswordSignInModel model;
+  late MockFirebaseAuth mockAuthService;
+  late EmailPasswordSignInModel model;
 
   setUp(() {
-    mockAuthService = MockAuthService();
+    mockAuthService = MockFirebaseAuth();
     model = EmailPasswordSignInModel(firebaseAuth: mockAuthService);
   });
 
