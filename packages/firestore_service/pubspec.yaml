@@ -1,6 +1,6 @@
 name: firestore_service
 description: Wrapper for Cloud Firestore
-version: 0.2.0
+version: 0.2.1
 author: Andrea Bizzotto
 homepage: https://www.codewithandrea.com
 
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: ^1.0.0
+  cloud_firestore: ^2.2.0
 
 dev_dependencies:
   flutter_test:
