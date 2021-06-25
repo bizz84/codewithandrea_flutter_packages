@@ -3,6 +3,7 @@ description: Wrapper for Cloud Firestore
 version: 0.2.1
 author: Andrea Bizzotto
 homepage: https://www.codewithandrea.com
+publish_to: none
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

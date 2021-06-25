@@ -3,6 +3,7 @@ description: A new Flutter package project.
 version: 0.2.0
 author: Andrea Bizzotto
 homepage: https://www.codewithandrea.com
+publish_to: none
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

@@ -3,6 +3,7 @@ description: Wrapper package for FirebaseAuth
 version: 0.1.0
 author: Andrea Bizzotto
 homepage: https://www.codewithandrea.com
+publish_to: none
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
