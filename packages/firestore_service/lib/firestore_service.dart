@@ -6,6 +6,16 @@ class FirestoreService {
   FirestoreService._();
   static final instance = FirestoreService._();
 
+  Future<void> createData({
+    required String path,
+    required Map<String, dynamic> data,
+    bool merge = false,
+  }) async {
+    final reference = FirebaseFirestore.instance.collection(path).doc();
+    print('$path: $data');
+    await reference.set(data);
+  }
+
   Future<void> setData({
     required String path,
     required Map<String, dynamic> data,
